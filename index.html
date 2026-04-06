@@ -33,6 +33,252 @@
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <style>
+      /* ── Publication Cards ── */
+      .pub-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pub-list li {
+        list-style: none;
+      }
+      .pub-card {
+        position: relative;
+        background: #fafbfc;
+        border: 1px solid #e1e4e8;
+        border-left: 3px solid #0366d6;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-bottom: 12px;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .pub-card:hover {
+        box-shadow: 0 2px 8px rgba(3, 102, 214, 0.12);
+        border-left-color: #0250a3;
+      }
+      .pub-card.accent-green {
+        border-left-color: #2ea44f;
+      }
+      .pub-card.accent-green:hover {
+        box-shadow: 0 2px 8px rgba(46, 164, 79, 0.12);
+        border-left-color: #22863a;
+      }
+      .pub-card.accent-orange {
+        border-left-color: #d29922;
+      }
+      .pub-card.accent-orange:hover {
+        box-shadow: 0 2px 8px rgba(210, 153, 34, 0.12);
+        border-left-color: #b08800;
+      }
+      .pub-card.accent-purple {
+        border-left-color: #8957e5;
+      }
+      .pub-card.accent-purple:hover {
+        box-shadow: 0 2px 8px rgba(137, 87, 229, 0.12);
+        border-left-color: #6f42c1;
+      }
+
+      .pub-title {
+        font-size: 0.95em;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 4px;
+      }
+      .pub-title a {
+        color: #24292e;
+        text-decoration: none;
+      }
+      .pub-title a:hover {
+        color: #0366d6;
+        text-decoration: underline;
+      }
+      .pub-authors {
+        font-size: 0.82em;
+        color: #586069;
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+      .pub-authors .me {
+        color: #24292e;
+        font-weight: 600;
+      }
+      .pub-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* ── Venue & Resource Badges ── */
+      .venue-badge {
+        display: inline-block;
+        font-size: 0.72em;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 12px;
+        letter-spacing: 0.02em;
+        line-height: 1.6;
+      }
+      .venue-acl2026 {
+        background: #ddf4ff;
+        color: #0550ae;
+      }
+      .venue-acl2025 {
+        background: #dafbe1;
+        color: #116329;
+      }
+      .venue-journal {
+        background: #fff8c5;
+        color: #6a5307;
+      }
+      .venue-preprint {
+        background: #f0edf8;
+        color: #6f42c1;
+      }
+
+      .res-link {
+        display: inline-block;
+        font-size: 0.72em;
+        font-weight: 500;
+        padding: 2px 8px;
+        border-radius: 4px;
+        text-decoration: none;
+        border: 1px solid #d0d7de;
+        color: #24292e;
+        background: #fff;
+        transition: all 0.15s ease;
+        line-height: 1.6;
+      }
+      .res-link:hover {
+        background: #f3f4f6;
+        border-color: #0366d6;
+        color: #0366d6;
+      }
+      .res-link i {
+        margin-right: 2px;
+        font-size: 0.9em;
+      }
+
+      .new-badge {
+        display: inline-block;
+        font-size: 0.65em;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 4px;
+        background: #cf222e;
+        color: #fff;
+        letter-spacing: 0.04em;
+        vertical-align: middle;
+        margin-left: 4px;
+      }
+
+      /* ── Section Headers ── */
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 28px;
+        margin-bottom: 14px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e1e4e8;
+      }
+      .section-header h3 {
+        margin: 0;
+        border: none;
+        padding: 0;
+      }
+      .section-header .section-icon {
+        font-size: 1.2em;
+        color: #586069;
+      }
+
+      .pub-category {
+        font-size: 0.85em;
+        font-weight: 600;
+        color: #57606a;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        padding-left: 2px;
+      }
+
+      /* ── Experience Cards ── */
+      .exp-card {
+        background: #fafbfc;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+      }
+      .exp-card h4 {
+        margin: 0 0 6px 0;
+        font-size: 0.92em;
+      }
+      .exp-card ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .exp-card li {
+        font-size: 0.88em;
+        color: #444d56;
+        margin-bottom: 2px;
+      }
+
+      /* ── Project Cards ── */
+      .proj-card {
+        background: #fafbfc;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+      }
+      .proj-title {
+        font-weight: 600;
+        font-size: 0.9em;
+        color: #24292e;
+        margin-bottom: 2px;
+      }
+      .proj-funder {
+        font-size: 0.78em;
+        color: #586069;
+      }
+      .proj-desc {
+        font-size: 0.83em;
+        color: #444d56;
+        margin-top: 4px;
+      }
+
+      /* ── Award Items ── */
+      .award-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 6px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 0.88em;
+      }
+      .award-item:last-child {
+        border-bottom: none;
+      }
+      .award-name {
+        color: #24292e;
+        font-weight: 500;
+      }
+      .award-detail {
+        color: #586069;
+        font-style: italic;
+        font-size: 0.92em;
+      }
+      .award-date {
+        color: #8b949e;
+        font-size: 0.85em;
+        white-space: nowrap;
+        margin-left: 12px;
+      }
+    </style>
   </head>
 
   <body>
@@ -71,191 +317,282 @@
           Multilingualism and Question Answering.
         </p>
 
-        <h3 id="education">Education</h3>
+        <!-- ════════ Education ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">school</i>
+          <h3 id="education">Education</h3>
+        </div>
 
-        <h4 class="education">
-          Chung-Ang University, Seoul, Korea
-          <sup>2025.02</sup>
-        </h4>
-        <ul>
-          <li>B.S. in Artificial Intelligence</li>
-          <li>GPA: 4.20/4.50 (Major GPA: 4.29/4.50)</li>
-        </ul>
+        <div class="exp-card">
+          <h4>Chung-Ang University, Seoul, Korea <sup>2025.02</sup></h4>
+          <ul>
+            <li>B.S. in Artificial Intelligence</li>
+            <li>GPA: 4.20/4.50 (Major GPA: 4.29/4.50)</li>
+          </ul>
+        </div>
 
-        <h3 id="experience">Affiliation &amp; Research Experience</h3>
+        <!-- ════════ Experience ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">work</i>
+          <h3 id="experience">Affiliation &amp; Research Experience</h3>
+        </div>
 
-        <h4 class="education">
-          Chung-Ang University, Seoul, Korea
-          <sup>2025.03 &ndash; Present</sup>
-        </h4>
-        <ul>
-          <li><b>Master Student</b>, Department of Artificial Intelligence</li>
-          <li>Language Intelligence LAB (LILAB)</li>
-          <li>Advisor: Prof. Hwanhee Lee</li>
-        </ul>
+        <div class="exp-card">
+          <h4>Chung-Ang University, Seoul, Korea <sup>2025.03 &ndash; Present</sup></h4>
+          <ul>
+            <li><b>Master Student</b>, Department of Artificial Intelligence</li>
+            <li>Language Intelligence LAB (LILAB)</li>
+            <li>Advisor: Prof. Hwanhee Lee</li>
+          </ul>
+        </div>
 
-        <h4 class="education">
-          Chung-Ang University, Seoul, Korea
-          <sup>2023.07 &ndash; 2025.02</sup>
-        </h4>
-        <ul>
-          <li><b>Research Intern</b>, Department of Artificial Intelligence,</li>
-          <li>Language Intelligence LAB (LILAB)</li>
-          <li>Advisor: Prof. Hwanhee Lee</li>
-        </ul>
+        <div class="exp-card">
+          <h4>Chung-Ang University, Seoul, Korea <sup>2023.07 &ndash; 2025.02</sup></h4>
+          <ul>
+            <li><b>Research Intern</b>, Department of Artificial Intelligence</li>
+            <li>Language Intelligence LAB (LILAB)</li>
+            <li>Advisor: Prof. Hwanhee Lee</li>
+          </ul>
+        </div>
 
-        <h4 class="education">
-          Chung-Ang University, Seoul, Korea
-          <sup>2022.12 &ndash; 2023.06</sup>
-        </h4>
-        <ul>
-          <li><b>Research Intern</b>, Department of Artificial Intelligence</li>
-          <li>Data Science LAB (DSLAB)</li>
-          <li>Advisor: Prof. Yoonsik Cho</li>
-        </ul>
+        <div class="exp-card">
+          <h4>Chung-Ang University, Seoul, Korea <sup>2022.12 &ndash; 2023.06</sup></h4>
+          <ul>
+            <li><b>Research Intern</b>, Department of Artificial Intelligence</li>
+            <li>Data Science LAB (DSLAB)</li>
+            <li>Advisor: Prof. Yoonsik Cho</li>
+          </ul>
+        </div>
 
-        <h4 class="education">
-          Adobe Research, Remote
-          <sup>2025.06 &ndash; Present</sup>
-        </h4>
-        <ul>
-          <li><b>Collaborative Researcher</b>, Natural Language Processing Group</li>
-          <li>Remote Working with Dr. Seunghyun Yoon</li>
-          <li>Theme: resolving ambiguous questions; understanding code-switched text</li>
-        </ul>
+        <div class="exp-card">
+          <h4>Adobe Research, Remote <sup>2025.06 &ndash; Present</sup></h4>
+          <ul>
+            <li><b>Collaborative Researcher</b>, Natural Language Processing Group</li>
+            <li>Remote Working with Dr. Seunghyun Yoon</li>
+            <li>Theme: resolving ambiguous questions; understanding code-switched text</li>
+          </ul>
+        </div>
 
-        <h3 id="publications">Publications</h3>
+        <!-- ════════ Publications ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">description</i>
+          <h3 id="publications">Publications</h3>
+        </div>
 
-        <h4>Conference / Findings</h4>
-        <ul>
+        <!-- Conference / Findings -->
+        <div class="pub-category">Conference / Findings</div>
+        <ul class="pub-list">
           <li>
-            <a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">
-              <em>Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion</em>
-            </a><br/>
-            Jeonghyun Park*, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee&#8224;<br/>
-            Findings of ACL 2026
-            &nbsp;|&nbsp;
-            <a href="https://github.com/jeonghyunpark2002/DELTA" target="_blank" rel="noopener noreferrer">[Code]</a>
+            <div class="pub-card">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">
+                  Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion
+                </a>
+                <span class="new-badge">NEW</span>
+              </div>
+              <div class="pub-authors">
+                <span class="me">Jeonghyun Park*</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-acl2026">Findings of ACL 2026</span>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/DELTA" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
           </li>
           <li>
-            <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">
-              <em>MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference</em>
-            </a><br/>
-            Jeonghyun Park*, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee&#8224;<br/>
-            Findings of ACL 2026
-            &nbsp;|&nbsp;
-            <a href="https://github.com/jeonghyunpark2002/MARCH" target="_blank" rel="noopener noreferrer">[Code]</a>
+            <div class="pub-card">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">
+                  MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference
+                </a>
+                <span class="new-badge">NEW</span>
+              </div>
+              <div class="pub-authors">
+                <span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-acl2026">Findings of ACL 2026</span>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/MARCH" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
           </li>
           <li>
-            <a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer">
-              <em>Investigating Language Preference of Multilingual RAG Systems</em>
-            </a><br/>
-            Jeonghyun Park, Hwanhee Lee&#8224;<br/>
-            Findings of ACL 2025
-            &nbsp;|&nbsp;
-            <a href="https://github.com/jeonghyunpark2002/LanguagePreference" target="_blank" rel="noopener noreferrer">[Code]</a>
-            &nbsp;
-            <a href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_Poster.pdf" target="_blank" rel="noopener noreferrer">[Poster]</a>
-            &nbsp;
-            <a href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_slides.pdf" target="_blank" rel="noopener noreferrer">[Slides]</a>
-          </li>
-        </ul>
-
-        <h4>Journal</h4>
-        <ul>
-          <li>
-            <a href="https://www.mdpi.com/2076-3417/15/14/7800" target="_blank" rel="noopener noreferrer">
-              <em>Cross-Lingual Summarization for Low-Resource Languages Using Multilingual Retrieval-Based In-Context Learning</em>
-            </a><br/>
-            Gyutae Park, Jeonghyun Park, Hwanhee Lee&#8224;<br/>
-            Applied Sciences, 2025          
-          </li>
-        </ul>
-
-        <h4>Preprint</h4>
-        <ul>
-          <li>
-            <a href="https://arxiv.org/abs/2601.04716" target="_blank" rel="noopener noreferrer">
-              <em>Identifying and Mitigating Bottlenecks in Role-Playing Agents: A Systematic Study of Disentangling Character Profile Axes</em>
-            </a><br/>
-            Yonghyun Jun, Junhyuk Choi, Jihyeong Park, Jeonghyun Park, Liu Nicole Geumheon, Hwanhee Lee&#8224;<br/>
-            arXiv:2601.04716
-          </li>
-          <li>
-            <a href="https://arxiv.org/abs/2508.18748" target="_blank" rel="noopener noreferrer">
-              <em>Chronological Passage Assembling in RAG Framework for Temporal Question Answering</em>
-            </a><br/>
-            Byeongjeong Kim, Jeonghyun Park, Hwanhee Lee&#8224;<br/>
-            arXiv:2508.18748
-          </li>
-          <li>
-            <a href="https://arxiv.org/abs/2407.12363" target="_blank" rel="noopener noreferrer">
-              <em>Conversational Query Reformulation with the Guidance of Retrieved Documents</em>
-            </a><br/>
-            Jeonghyun Park, Hwanhee Lee&#8224;<br/>
-            arXiv:2407.12363
+            <div class="pub-card accent-green">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer">
+                  Investigating Language Preference of Multilingual RAG Systems
+                </a>
+              </div>
+              <div class="pub-authors">
+                <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-acl2025">Findings of ACL 2025</span>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_Poster.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-image"></i> Poster</a>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_slides.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-tv"></i> Slides</a>
+              </div>
+            </div>
           </li>
         </ul>
 
-        <h3 id="projects">Research Projects</h3>
-        <ul>
+        <!-- Journal -->
+        <div class="pub-category">Journal</div>
+        <ul class="pub-list">
           <li>
-            <b>Plug-in External-Memory Models for Augmenting Knowledge of Large Language Models</b><br/>
-            Funded by National Research Foundation of Korea (NRF) <sup>2025.09 &ndash; Present</sup><br/>
-            Research on next-generation RAG via plug-in external memory
-          </li>
-          <li>
-            <b>Next-Generation O2O Fashion Retail System: Enhancing Sales Through Integration of Personal Shoppers and Immersive Virtual Fitting</b><br/>
-            Funded by the Ministry of Trade, Industry and Energy <sup>2025.07 &ndash; Present</sup><br/>
-            Developing conversational fashion AI agent
-          </li>
-          <li>
-            <b>Risk Assessment of Construction Site based on LLMs</b><br/>
-            Funded by Doosan Enerbility <sup>2024.06 &ndash; 2025.05</sup><br/>
-            Risk assessment and prediction with Large Language Models
-          </li>
-          <li>
-            <b>Translation-Free Strategies for Consistent Multilingual Retrieval-Augmented Generation</b><br/>
-            Funded by National Research Foundation of Korea (NRF) <sup>2026</sup><br/>
-            Develop translation-free multilingual RAG strategies to improve cross-lingual consistency without English pivoting
+            <div class="pub-card accent-orange">
+              <div class="pub-title">
+                <a href="https://www.mdpi.com/2076-3417/15/14/7800" target="_blank" rel="noopener noreferrer">
+                  Cross-Lingual Summarization for Low-Resource Languages Using Multilingual Retrieval-Based In-Context Learning
+                </a>
+              </div>
+              <div class="pub-authors">
+                Gyutae Park, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-journal">Applied Sciences, 2025</span>
+              </div>
+            </div>
           </li>
         </ul>
 
-        <h3 id="awards">Scholarships &amp; Awards</h3>
-        <ul>
+        <!-- Preprint -->
+        <div class="pub-category">Preprint / Under Review</div>
+        <ul class="pub-list">
           <li>
-            Department Secondary Honor Scholarship <em>(Merit-based; Top 10%)</em>
-            <sup>2021.09, 2024.09</sup>
+            <div class="pub-card accent-purple">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2601.04716" target="_blank" rel="noopener noreferrer">
+                  Identifying and Mitigating Bottlenecks in Role-Playing Agents: A Systematic Study of Disentangling Character Profile Axes
+                </a>
+              </div>
+              <div class="pub-authors">
+                Yonghyun Jun, Junhyuk Choi, Jihyeong Park, <span class="me">Jeonghyun Park</span>, Liu Nicole Geumheon, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-preprint">arXiv:2601.04716</span>
+              </div>
+            </div>
           </li>
           <li>
-            Excellence Award at 2022 SW·AI Startup Idea Competition
-            <em>(Da Vinci SW·AI Tech Fair)</em>
-            <sup>2022.09</sup>
-          </li>          
-          <li>
-            Department Honor Scholarship <em>(Merit-based; 1st)</em>
-            <sup>2024.03</sup>
+            <div class="pub-card accent-purple">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2508.18748" target="_blank" rel="noopener noreferrer">
+                  Chronological Passage Assembling in RAG Framework for Temporal Question Answering
+                </a>
+              </div>
+              <div class="pub-authors">
+                Byeongjeong Kim, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-preprint">arXiv:2508.18748</span>
+              </div>
+            </div>
           </li>
           <li>
-            Graduated with Highest Honors
-            <em>(GPA &ge; 4.2/4.5)</em>
-            <sup>2025.02</sup>
-          </li>
-          <li>
-            Leadership Scholarship
-            <em>(Department Representative)</em>
-            <sup>2022.09, 2023.03, 2024.03</sup>
-          </li>
-          <li>
-            Vice President Scholarship
-            <em>(Department Student Council)</em>
-            <sup>2021.11 &ndash; 2022.11</sup>
-          </li>          
-          <li>
-            Graduate Research Scholarship (GRS) <em>(Full tuition)</em>
-            <sup>2025.03 &ndash; Present</sup>
+            <div class="pub-card accent-purple">
+              <div class="pub-title">
+                <a href="https://arxiv.org/abs/2407.12363" target="_blank" rel="noopener noreferrer">
+                  Conversational Query Reformulation with the Guidance of Retrieved Documents
+                </a>
+              </div>
+              <div class="pub-authors">
+                <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
+              </div>
+              <div class="pub-meta">
+                <span class="venue-badge venue-preprint">arXiv:2407.12363</span>
+                <a class="res-link" href="https://github.com/jeonghyunpark2002/GuideCQR" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
           </li>
         </ul>
+
+        <!-- ════════ Research Projects ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">science</i>
+          <h3 id="projects">Research Projects</h3>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Plug-in External-Memory Models for Augmenting Knowledge of Large Language Models</div>
+          <div class="proj-funder">Funded by National Research Foundation of Korea (NRF) &middot; <em>2025.09 &ndash; Present</em></div>
+          <div class="proj-desc">Research on next-generation RAG via plug-in external memory</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Next-Generation O2O Fashion Retail System: Enhancing Sales Through Integration of Personal Shoppers and Immersive Virtual Fitting</div>
+          <div class="proj-funder">Funded by the Ministry of Trade, Industry and Energy &middot; <em>2025.07 &ndash; Present</em></div>
+          <div class="proj-desc">Developing conversational fashion AI agent</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Risk Assessment of Construction Site based on LLMs</div>
+          <div class="proj-funder">Funded by Doosan Enerbility &middot; <em>2024.06 &ndash; 2025.05</em></div>
+          <div class="proj-desc">Risk assessment and prediction with Large Language Models</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Translation-Free Strategies for Consistent Multilingual Retrieval-Augmented Generation</div>
+          <div class="proj-funder">Funded by National Research Foundation of Korea (NRF) &middot; <em>2026</em></div>
+          <div class="proj-desc">Develop translation-free multilingual RAG strategies to improve cross-lingual consistency without English pivoting</div>
+        </div>
+
+        <!-- ════════ Awards ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">emoji_events</i>
+          <h3 id="awards">Scholarships &amp; Awards</h3>
+        </div>
+
+        <div class="award-item">
+          <div>
+            <span class="award-name">Graduate Research Scholarship (GRS)</span>
+            <span class="award-detail">&nbsp;&mdash; Full tuition</span>
+          </div>
+          <span class="award-date">2025.03 &ndash; Present</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Graduated with Highest Honors</span>
+            <span class="award-detail">&nbsp;&mdash; GPA &ge; 4.2/4.5</span>
+          </div>
+          <span class="award-date">2025.02</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Department Honor Scholarship</span>
+            <span class="award-detail">&nbsp;&mdash; Merit-based; 1st in cohort</span>
+          </div>
+          <span class="award-date">2024.03</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Department Secondary Honor Scholarship</span>
+            <span class="award-detail">&nbsp;&mdash; Merit-based; Top 10%</span>
+          </div>
+          <span class="award-date">2021.09, 2024.09</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Leadership Scholarship</span>
+            <span class="award-detail">&nbsp;&mdash; Department Representative</span>
+          </div>
+          <span class="award-date">2022.09, 2023.03, 2024.03</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Excellence Award, SW&middot;AI Startup Idea Competition</span>
+            <span class="award-detail">&nbsp;&mdash; Da Vinci SW&middot;AI Tech Fair</span>
+          </div>
+          <span class="award-date">2022.09</span>
+        </div>
+        <div class="award-item">
+          <div>
+            <span class="award-name">Vice President Scholarship</span>
+            <span class="award-detail">&nbsp;&mdash; Department Student Council</span>
+          </div>
+          <span class="award-date">2021.11 &ndash; 2022.11</span>
+        </div>
+
       </section>
 
       <footer>
