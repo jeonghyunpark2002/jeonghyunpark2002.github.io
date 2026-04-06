@@ -161,17 +161,32 @@
         font-size: 0.9em;
       }
 
-      .new-badge {
-        display: inline-block;
-        font-size: 0.65em;
+      /* ── News Section ── */
+      .news-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .news-item {
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 0.88em;
+        line-height: 1.55;
+      }
+      .news-item:last-child {
+        border-bottom: none;
+      }
+      .news-date {
         font-weight: 700;
-        padding: 1px 6px;
-        border-radius: 4px;
-        background: #cf222e;
-        color: #fff;
-        letter-spacing: 0.04em;
-        vertical-align: middle;
-        margin-left: 4px;
+        color: #24292e;
+        margin-right: 4px;
+      }
+      .news-item a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+      .news-item a:hover {
+        text-decoration: underline;
       }
 
       /* ── Section Headers ── */
@@ -317,6 +332,27 @@
           Multilingualism and Question Answering.
         </p>
 
+        <!-- ════════ News ════════ -->
+        <div class="section-header">
+          <i class="material-icons section-icon">campaign</i>
+          <h3 id="news">News</h3>
+        </div>
+
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Apr. 2026:</span>
+            Two of my papers (<a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer"><em>DELTA</em></a>, <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer"><em>MARCH</em></a>) have been accepted to <b>ACL 2026 Findings</b>.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Sep. 2025:</span>
+            Got a research grant from 석사과정생연구장려금지원사업 for the <em>"Translation-Free Strategies for Consistent Multilingual Retrieval-Augmented Generation"</em> project. (2025&ndash;2026)
+          </li>
+          <li class="news-item">
+            <span class="news-date">May 2025:</span>
+            My paper (<a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer"><em>Investigating Language Preference</em></a>) has been accepted to <b>ACL 2025 Findings</b>.
+          </li>
+        </ul>
+
         <!-- ════════ Education ════════ -->
         <div class="section-header">
           <i class="material-icons section-icon">school</i>
@@ -388,7 +424,6 @@
                 <a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">
                   Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion
                 </a>
-                <span class="new-badge">NEW</span>
               </div>
               <div class="pub-authors">
                 <span class="me">Jeonghyun Park*</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee&#8224;
@@ -405,7 +440,6 @@
                 <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">
                   MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference
                 </a>
-                <span class="new-badge">NEW</span>
               </div>
               <div class="pub-authors">
                 <span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee&#8224;
