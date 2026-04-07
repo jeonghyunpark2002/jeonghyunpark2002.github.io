@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css" />
 
   <style>
-    :root {
+    /* ══════ THEME VARIABLES ══════ */
+    [data-theme="dark"] {
       --bg: #0c0c0e;
       --surface: #141418;
       --surface-hover: #1a1a20;
@@ -30,7 +31,47 @@
       --accent-green: #3dd68c;
       --accent-orange: #f0a03c;
       --accent-rose: #f06292;
-      --accent-cyan: #4dd0e1;
+      --nav-bg: rgba(12,12,14,0.75);
+      --glow-color: rgba(108,99,255,0.06);
+      --grain-opacity: 0.025;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+      --photo-ring: rgba(108,99,255,0.2);
+      --venue-acl26-bg: rgba(108,99,255,0.12); --venue-acl26-text: #a49bff;
+      --venue-acl25-bg: rgba(61,214,140,0.1);  --venue-acl25-text: #3dd68c;
+      --venue-journal-bg: rgba(240,160,60,0.1); --venue-journal-text: #f0a03c;
+      --venue-preprint-bg: rgba(240,98,146,0.1); --venue-preprint-text: #f06292;
+      --pill-rag-bg: rgba(108,99,255,0.12); --pill-rag-text: #a49bff;
+      --pill-multi-bg: rgba(61,214,140,0.1); --pill-multi-text: #3dd68c;
+      --pill-qa-bg: rgba(240,160,60,0.1); --pill-qa-text: #f0a03c;
+    }
+    [data-theme="light"] {
+      --bg: #f8f8fa;
+      --surface: #ffffff;
+      --surface-hover: #f0f0f4;
+      --border: #e0e0e6;
+      --border-light: #d0d0d8;
+      --text: #1a1a2e;
+      --text-secondary: #555568;
+      --text-muted: #8888a0;
+      --accent: #5046e5;
+      --accent-glow: rgba(80, 70, 229, 0.08);
+      --accent-green: #16a34a;
+      --accent-orange: #d97706;
+      --accent-rose: #e11d48;
+      --nav-bg: rgba(248,248,250,0.82);
+      --glow-color: rgba(80,70,229,0.04);
+      --grain-opacity: 0.015;
+      --shadow-card: 0 1px 4px rgba(0,0,0,0.06);
+      --photo-ring: rgba(80,70,229,0.15);
+      --venue-acl26-bg: rgba(80,70,229,0.08); --venue-acl26-text: #4338ca;
+      --venue-acl25-bg: rgba(22,163,74,0.08); --venue-acl25-text: #15803d;
+      --venue-journal-bg: rgba(217,119,6,0.08); --venue-journal-text: #a16207;
+      --venue-preprint-bg: rgba(225,29,72,0.06); --venue-preprint-text: #be123c;
+      --pill-rag-bg: rgba(80,70,229,0.08); --pill-rag-text: #4338ca;
+      --pill-multi-bg: rgba(22,163,74,0.08); --pill-multi-text: #15803d;
+      --pill-qa-bg: rgba(217,119,6,0.08); --pill-qa-text: #a16207;
+    }
+    :root {
       --radius: 12px;
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-body: 'Instrument Sans', -apple-system, sans-serif;
@@ -38,7 +79,6 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -47,229 +87,139 @@
       color: var(--text);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
-    /* ── Grain Overlay ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.025;
+      opacity: var(--grain-opacity);
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 128px;
     }
 
-    /* ── Hero Ambient Glow ── */
     .hero-glow {
-      position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(108,99,255,0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+      position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse, var(--glow-color) 0%, transparent 70%);
+      pointer-events: none; z-index: 0; transition: background 0.35s ease;
     }
 
-    /* ── Layout ── */
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
+    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-    /* ── Navigation ── */
+    /* ── Nav ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background: rgba(12,12,14,0.75);
+      background: var(--nav-bg);
       border-bottom: 1px solid var(--border);
+      transition: background 0.35s ease, border-color 0.35s ease;
     }
     .nav-inner {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
+      max-width: 820px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 56px;
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.01em;
+      font-family: var(--font-display); font-size: 1.15rem;
+      color: var(--text); text-decoration: none; letter-spacing: -0.01em;
     }
-    .nav-links {
-      display: flex;
-      gap: 6px;
+    .nav-right { display: flex; align-items: center; gap: 4px; }
+    .nav-right a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 6px 12px; border-radius: 8px; transition: all 0.2s;
     }
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 8px;
-      transition: all 0.2s;
+    .nav-right a:hover { color: var(--text); background: var(--surface); }
+
+    /* ── Theme Toggle ── */
+    .theme-toggle {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--surface); color: var(--text-secondary);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s ease; margin-left: 8px; flex-shrink: 0;
     }
-    .nav-links a:hover {
-      color: var(--text);
-      background: var(--surface);
-    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-glow); }
+    .theme-toggle .material-icons { font-size: 18px; }
+    .theme-toggle .icon-light { display: none; }
+    .theme-toggle .icon-dark  { display: block; }
+    [data-theme="light"] .theme-toggle .icon-light { display: block; }
+    [data-theme="light"] .theme-toggle .icon-dark  { display: none; }
 
     /* ── Hero ── */
     .hero {
       padding: 80px 0 60px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
     }
     .hero-text h1 {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      font-family: var(--font-display); font-size: 3rem; font-weight: 400;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 4px;
     }
     .hero-text h1 .kr {
-      font-size: 1.4rem;
-      color: var(--text-muted);
-      font-family: var(--font-body);
-      font-weight: 400;
-      margin-left: 12px;
+      font-size: 1.4rem; color: var(--text-muted);
+      font-family: var(--font-body); font-weight: 400; margin-left: 12px;
     }
     .hero-text .tagline {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      margin: 12px 0 20px;
-      line-height: 1.65;
+      font-size: 0.95rem; color: var(--text-secondary);
+      margin: 14px 0 22px; line-height: 1.78;
     }
-    .hero-text .tagline strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .hero-text .tagline strong { color: var(--text); font-weight: 600; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 8px; }
     .hero-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 7px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 7px 14px; border: 1px solid var(--border);
+      border-radius: 8px; transition: all 0.2s;
     }
-    .hero-links a:hover {
-      color: var(--text);
-      border-color: var(--accent);
-      background: var(--accent-glow);
-    }
+    .hero-links a:hover { color: var(--text); border-color: var(--accent); background: var(--accent-glow); }
     .hero-links a i { font-size: 0.95rem; }
 
     .hero-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      position: relative;
+      width: 180px; height: 180px; border-radius: 50%; overflow: hidden;
+      border: 2px solid var(--border); flex-shrink: 0; position: relative;
+      transition: border-color 0.35s ease;
     }
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      border: 1px solid rgba(108,99,255,0.2);
+      content: ''; position: absolute; inset: -3px;
+      border-radius: 50%; border: 1px solid var(--photo-ring);
     }
 
-    /* ── Interests Pills ── */
-    .interests {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
+    .interests { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .pill {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+      border-radius: 20px; letter-spacing: 0.03em; text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
     }
-    .pill--rag { background: rgba(108,99,255,0.12); color: #a49bff; }
-    .pill--multi { background: rgba(61,214,140,0.1); color: #3dd68c; }
-    .pill--qa { background: rgba(240,160,60,0.1); color: #f0a03c; }
+    .pill--rag   { background: var(--pill-rag-bg);   color: var(--pill-rag-text); }
+    .pill--multi { background: var(--pill-multi-bg); color: var(--pill-multi-text); }
+    .pill--qa    { background: var(--pill-qa-bg);    color: var(--pill-qa-text); }
 
     /* ── Section ── */
-    .section {
-      margin-top: 56px;
-    }
+    .section { margin-top: 56px; }
     .section-title {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 400;
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
     }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--border), transparent);
-    }
-    .section-title .material-icons {
-      font-size: 1.1rem;
-      color: var(--accent);
-      opacity: 0.7;
-    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .section-title .material-icons { font-size: 1.1rem; color: var(--accent); opacity: 0.7; }
 
     /* ── News ── */
     .news-list { list-style: none; }
     .news-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      display: flex; gap: 16px; font-size: 0.9rem; line-height: 1.6;
+      transition: border-color 0.3s;
     }
     .news-item:last-child { border-bottom: none; }
     .news-date {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      padding-top: 1px;
-      min-width: 80px;
+      font-family: var(--font-mono); font-size: 0.78rem;
+      color: var(--text-muted); white-space: nowrap; padding-top: 1px; min-width: 80px;
     }
     .news-body { color: var(--text-secondary); }
     .news-body a { color: var(--accent); text-decoration: none; }
@@ -278,235 +228,99 @@
 
     /* ── Publication Cards ── */
     .pub-category {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-top: 28px;
-      margin-bottom: 12px;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-top: 28px; margin-bottom: 12px;
     }
     .pub-list { list-style: none; }
     .pub-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      margin-bottom: 10px;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px; margin-bottom: 10px;
+      transition: all 0.25s ease; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-card);
     }
     .pub-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--accent);
-      border-radius: 0 2px 2px 0;
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--accent); border-radius: 0 2px 2px 0;
     }
-    .pub-card:hover {
-      border-color: var(--border-light);
-      background: var(--surface-hover);
-      transform: translateY(-1px);
-    }
-    .pub-card.green::before { background: var(--accent-green); }
+    .pub-card:hover { border-color: var(--border-light); background: var(--surface-hover); transform: translateY(-1px); }
+    .pub-card.green::before  { background: var(--accent-green); }
     .pub-card.orange::before { background: var(--accent-orange); }
-    .pub-card.rose::before { background: var(--accent-rose); }
+    .pub-card.rose::before   { background: var(--accent-rose); }
 
-    .pub-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      line-height: 1.45;
-      margin-bottom: 5px;
-    }
-    .pub-title a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .pub-title { font-size: 0.92rem; font-weight: 600; line-height: 1.45; margin-bottom: 5px; }
+    .pub-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
     .pub-title a:hover { color: var(--accent); }
-    .pub-authors {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    .pub-authors .me {
-      color: var(--text);
-      font-weight: 600;
-    }
-    .pub-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 7px;
-    }
+    .pub-authors { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+    .pub-authors .me { color: var(--text); font-weight: 600; }
+    .pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
     .venue {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 6px;
-      letter-spacing: 0.03em;
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500;
+      padding: 3px 10px; border-radius: 6px; letter-spacing: 0.03em;
+      transition: background 0.3s, color 0.3s;
     }
-    .venue--acl26 { background: rgba(108,99,255,0.12); color: #a49bff; }
-    .venue--acl25 { background: rgba(61,214,140,0.1); color: #3dd68c; }
-    .venue--journal { background: rgba(240,160,60,0.1); color: #f0a03c; }
-    .venue--preprint { background: rgba(240,98,146,0.1); color: #f06292; }
+    .venue--acl26   { background: var(--venue-acl26-bg);   color: var(--venue-acl26-text); }
+    .venue--acl25   { background: var(--venue-acl25-bg);   color: var(--venue-acl25-text); }
+    .venue--journal { background: var(--venue-journal-bg); color: var(--venue-journal-text); }
+    .venue--preprint{ background: var(--venue-preprint-bg); color: var(--venue-preprint-text); }
 
     .res-link {
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      font-size: 0.72rem; font-weight: 500; padding: 3px 10px; border-radius: 6px;
+      text-decoration: none; border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 4px;
     }
-    .res-link:hover {
-      border-color: var(--accent);
-      color: var(--text);
-      background: var(--accent-glow);
-    }
+    .res-link:hover { border-color: var(--accent); color: var(--text); background: var(--accent-glow); }
     .res-link i { font-size: 0.82rem; }
 
-    /* ── Education & Experience ── */
+    /* ── Timeline ── */
     .timeline { position: relative; }
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: var(--border);
+      content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border);
     }
-    .tl-item {
-      padding-left: 32px;
-      position: relative;
-      margin-bottom: 20px;
-    }
+    .tl-item { padding-left: 32px; position: relative; margin-bottom: 20px; }
     .tl-item::before {
-      content: '';
-      position: absolute;
-      left: 3px;
-      top: 8px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--accent);
+      content: ''; position: absolute; left: 3px; top: 8px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent); transition: background 0.3s;
     }
-    .tl-item.active::before {
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent-glow);
-    }
-    .tl-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tl-org {
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--text);
-    }
-    .tl-date {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .tl-role {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-    .tl-detail {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
+    .tl-item.active::before { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+    .tl-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .tl-org { font-weight: 600; font-size: 0.92rem; color: var(--text); }
+    .tl-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+    .tl-role { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+    .tl-detail { font-size: 0.82rem; color: var(--text-muted); }
 
     /* ── Project Cards ── */
-    .proj-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .proj-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      transition: all 0.25s;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+      transition: all 0.25s; box-shadow: var(--shadow-card);
     }
-    .proj-card:hover {
-      border-color: var(--border-light);
-      background: var(--surface-hover);
-    }
-    .proj-title-text {
-      font-weight: 600;
-      font-size: 0.88rem;
-      line-height: 1.45;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .proj-funder {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .proj-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
+    .proj-card:hover { border-color: var(--border-light); background: var(--surface-hover); }
+    .proj-title-text { font-weight: 600; font-size: 0.88rem; line-height: 1.45; color: var(--text); margin-bottom: 6px; }
+    .proj-funder { font-size: 0.76rem; color: var(--text-muted); margin-bottom: 6px; }
+    .proj-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
 
     /* ── Awards ── */
     .award-list { list-style: none; }
     .award-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      gap: 16px;
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px;
+      transition: border-color 0.3s;
     }
     .award-row:last-child { border-bottom: none; }
-    .award-name {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .award-detail {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-    .award-date-col {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
+    .award-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
+    .award-detail { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+    .award-date-col { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
 
     /* ── Footer ── */
     footer {
-      margin-top: 80px;
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      margin-top: 80px; padding: 24px 0; border-top: 1px solid var(--border);
+      text-align: center; font-size: 0.78rem; color: var(--text-muted);
+      transition: border-color 0.3s;
     }
     footer a { color: var(--text-secondary); text-decoration: none; }
     footer a:hover { color: var(--text); }
@@ -514,12 +328,9 @@
     /* ── Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .animate-in {
-      animation: fadeUp 0.6s ease forwards;
-      opacity: 0;
-    }
+    .animate-in { animation: fadeUp 0.6s ease forwards; opacity: 0; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
@@ -527,25 +338,15 @@
 
     /* ── Responsive ── */
     @media (max-width: 700px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 28px;
-        padding: 60px 0 40px;
-      }
-      .hero-photo {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto;
-        order: -1;
-      }
+      .hero { grid-template-columns: 1fr; text-align: center; gap: 28px; padding: 60px 0 40px; }
+      .hero-photo { width: 140px; height: 140px; margin: 0 auto; order: -1; }
       .hero-text h1 { font-size: 2.2rem; }
       .hero-text h1 .kr { display: block; margin-left: 0; margin-top: 4px; }
       .hero-links { justify-content: center; }
       .interests { justify-content: center; }
       .proj-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 2px; }
-      .nav-links a { padding: 6px 8px; font-size: 0.75rem; }
+      .nav-right { gap: 2px; }
+      .nav-right a { padding: 6px 8px; font-size: 0.75rem; }
       .section-title { font-size: 1.35rem; }
     }
   </style>
@@ -554,16 +355,19 @@
 
 <div class="hero-glow"></div>
 
-<!-- Navigation -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">J. Park</a>
-    <div class="nav-links">
+    <div class="nav-right">
       <a href="#news">News</a>
-      <a href="#publications">Pubs</a>
+      <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#awards">Awards</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="material-icons icon-dark">light_mode</i>
+        <i class="material-icons icon-light">dark_mode</i>
+      </button>
     </div>
   </div>
 </nav>
@@ -575,8 +379,14 @@
     <div class="hero-text">
       <h1 class="animate-in">Jeonghyun Park <span class="kr">박정현</span></h1>
       <p class="tagline animate-in delay-1">
-        M.S. student in AI at <strong>Chung-Ang University</strong>, Seoul.
-        Advised by Prof. Hwanhee Lee.
+        I am an M.S. student in the Department of Artificial Intelligence at <strong>Chung-Ang University</strong> (Seoul, Korea),
+        advised by <strong>Prof. Hwanhee Lee</strong> in the Language Intelligence Lab (LILAB).
+        My research centers on <strong>Retrieval-Augmented Generation (RAG)</strong>, with a particular emphasis on
+        multilingual settings where language bias and cross-lingual inconsistency remain open challenges.
+        I also explore <strong>ambiguity resolution</strong> in question answering &mdash; investigating how large language models
+        interpret and reason over semantically ambiguous queries that require multi-hop inference.
+        Recently, I have been collaborating with <strong>Adobe Research</strong> on understanding code-switched text and
+        developing benchmarks at the intersection of ambiguity interpretation and complex reasoning.
       </p>
       <div class="interests animate-in delay-2">
         <span class="pill pill--rag">RAG</span>
@@ -606,7 +416,7 @@
       </li>
       <li class="news-item">
         <span class="news-date">Sep 2025</span>
-        <span class="news-body">Research grant awarded for <em>"Translation-Free Strategies for Consistent Multilingual RAG"</em> project (2025–2026).</span>
+        <span class="news-body">Research grant awarded for <em>&ldquo;Translation-Free Strategies for Consistent Multilingual RAG&rdquo;</em> project (2025&ndash;2026).</span>
       </li>
       <li class="news-item">
         <span class="news-date">May 2025</span>
@@ -619,12 +429,12 @@
   <section class="section" id="publications">
     <h2 class="section-title"><i class="material-icons">description</i> Publications</h2>
 
-    <div class="pub-category">Conference / Findings</div>
+    <div class="pub-category">Conference</div>
     <ul class="pub-list">
       <li>
         <div class="pub-card">
           <div class="pub-title"><a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion</a></div>
-          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee†</div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee&dagger;</div>
           <div class="pub-meta">
             <span class="venue venue--acl26">Findings of ACL 2026</span>
             <a class="res-link" href="https://github.com/jeonghyunpark2002/DELTA" target="_blank"><i class="fab fa-github"></i> Code</a>
@@ -634,7 +444,7 @@
       <li>
         <div class="pub-card">
           <div class="pub-title"><a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference</a></div>
-          <div class="pub-authors"><span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee†</div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee&dagger;</div>
           <div class="pub-meta">
             <span class="venue venue--acl26">Findings of ACL 2026</span>
             <a class="res-link" href="https://github.com/jeonghyunpark2002/MARCH" target="_blank"><i class="fab fa-github"></i> Code</a>
@@ -644,7 +454,7 @@
       <li>
         <div class="pub-card green">
           <div class="pub-title"><a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer">Investigating Language Preference of Multilingual RAG Systems</a></div>
-          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee&dagger;</div>
           <div class="pub-meta">
             <span class="venue venue--acl25">Findings of ACL 2025</span>
             <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference" target="_blank"><i class="fab fa-github"></i> Code</a>
@@ -660,7 +470,7 @@
       <li>
         <div class="pub-card orange">
           <div class="pub-title"><a href="https://www.mdpi.com/2076-3417/15/14/7800" target="_blank" rel="noopener noreferrer">Cross-Lingual Summarization for Low-Resource Languages Using Multilingual Retrieval-Based In-Context Learning</a></div>
-          <div class="pub-authors">Gyutae Park, <span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-authors">Gyutae Park, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&dagger;</div>
           <div class="pub-meta">
             <span class="venue venue--journal">Applied Sciences, 2025</span>
           </div>
@@ -673,21 +483,21 @@
       <li>
         <div class="pub-card rose">
           <div class="pub-title"><a href="https://arxiv.org/abs/2601.04716" target="_blank" rel="noopener noreferrer">Identifying and Mitigating Bottlenecks in Role-Playing Agents: A Systematic Study of Disentangling Character Profile Axes</a></div>
-          <div class="pub-authors">Yonghyun Jun, Junhyuk Choi, Jihyeong Park, <span class="me">Jeonghyun Park</span>, Liu Nicole Geumheon, Hwanhee Lee†</div>
+          <div class="pub-authors">Yonghyun Jun, Junhyuk Choi, Jihyeong Park, <span class="me">Jeonghyun Park</span>, Liu Nicole Geumheon, Hwanhee Lee&dagger;</div>
           <div class="pub-meta"><span class="venue venue--preprint">arXiv:2601.04716</span></div>
         </div>
       </li>
       <li>
         <div class="pub-card rose">
           <div class="pub-title"><a href="https://arxiv.org/abs/2508.18748" target="_blank" rel="noopener noreferrer">Chronological Passage Assembling in RAG Framework for Temporal Question Answering</a></div>
-          <div class="pub-authors">Byeongjeong Kim, <span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-authors">Byeongjeong Kim, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&dagger;</div>
           <div class="pub-meta"><span class="venue venue--preprint">arXiv:2508.18748</span></div>
         </div>
       </li>
       <li>
         <div class="pub-card rose">
           <div class="pub-title"><a href="https://arxiv.org/abs/2407.12363" target="_blank" rel="noopener noreferrer">Conversational Query Reformulation with the Guidance of Retrieved Documents</a></div>
-          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee&dagger;</div>
           <div class="pub-meta">
             <span class="venue venue--preprint">arXiv:2407.12363</span>
             <a class="res-link" href="https://github.com/jeonghyunpark2002/GuideCQR" target="_blank"><i class="fab fa-github"></i> Code</a>
@@ -700,50 +510,30 @@
   <!-- Education & Experience -->
   <section class="section" id="experience">
     <h2 class="section-title"><i class="material-icons">school</i> Education &amp; Experience</h2>
-
     <div class="timeline">
       <div class="tl-item active">
-        <div class="tl-header">
-          <span class="tl-org">Adobe Research</span>
-          <span class="tl-date">2025.06 – Present</span>
-        </div>
-        <div class="tl-role">Collaborative Researcher · NLP Group (Remote)</div>
-        <div class="tl-detail">w/ Dr. Seunghyun Yoon · Ambiguous questions & code-switched text</div>
+        <div class="tl-header"><span class="tl-org">Adobe Research</span><span class="tl-date">2025.06 &ndash; Present</span></div>
+        <div class="tl-role">Collaborative Researcher &middot; NLP Group (Remote)</div>
+        <div class="tl-detail">w/ Dr. Seunghyun Yoon &middot; Ambiguous questions &amp; code-switched text</div>
       </div>
-
       <div class="tl-item active">
-        <div class="tl-header">
-          <span class="tl-org">Chung-Ang University</span>
-          <span class="tl-date">2025.03 – Present</span>
-        </div>
-        <div class="tl-role">M.S. Student · Dept. of AI · LILAB</div>
+        <div class="tl-header"><span class="tl-org">Chung-Ang University</span><span class="tl-date">2025.03 &ndash; Present</span></div>
+        <div class="tl-role">M.S. Student &middot; Dept. of AI &middot; LILAB</div>
         <div class="tl-detail">Advisor: Prof. Hwanhee Lee</div>
       </div>
-
       <div class="tl-item">
-        <div class="tl-header">
-          <span class="tl-org">Chung-Ang University</span>
-          <span class="tl-date">2025.02</span>
-        </div>
+        <div class="tl-header"><span class="tl-org">Chung-Ang University</span><span class="tl-date">2025.02</span></div>
         <div class="tl-role">B.S. in Artificial Intelligence</div>
-        <div class="tl-detail">GPA 4.20/4.50 · Graduated with Highest Honors</div>
+        <div class="tl-detail">GPA 4.20/4.50 &middot; Graduated with Highest Honors</div>
       </div>
-
       <div class="tl-item">
-        <div class="tl-header">
-          <span class="tl-org">Chung-Ang University · LILAB</span>
-          <span class="tl-date">2023.07 – 2025.02</span>
-        </div>
-        <div class="tl-role">Research Intern · Dept. of AI</div>
+        <div class="tl-header"><span class="tl-org">Chung-Ang University &middot; LILAB</span><span class="tl-date">2023.07 &ndash; 2025.02</span></div>
+        <div class="tl-role">Research Intern &middot; Dept. of AI</div>
         <div class="tl-detail">Advisor: Prof. Hwanhee Lee</div>
       </div>
-
       <div class="tl-item">
-        <div class="tl-header">
-          <span class="tl-org">Chung-Ang University · DSLAB</span>
-          <span class="tl-date">2022.12 – 2023.06</span>
-        </div>
-        <div class="tl-role">Research Intern · Dept. of AI</div>
+        <div class="tl-header"><span class="tl-org">Chung-Ang University &middot; DSLAB</span><span class="tl-date">2022.12 &ndash; 2023.06</span></div>
+        <div class="tl-role">Research Intern &middot; Dept. of AI</div>
         <div class="tl-detail">Advisor: Prof. Yoonsik Cho</div>
       </div>
     </div>
@@ -752,26 +542,25 @@
   <!-- Projects -->
   <section class="section" id="projects">
     <h2 class="section-title"><i class="material-icons">science</i> Research Projects</h2>
-
     <div class="proj-grid">
       <div class="proj-card">
         <div class="proj-title-text">Plug-in External-Memory Models for Augmenting Knowledge of LLMs</div>
-        <div class="proj-funder">NRF · 2025.09 – Present</div>
+        <div class="proj-funder">NRF &middot; 2025.09 &ndash; Present</div>
         <div class="proj-desc">Next-generation RAG via plug-in external memory</div>
       </div>
       <div class="proj-card">
         <div class="proj-title-text">Next-Gen O2O Fashion Retail System</div>
-        <div class="proj-funder">Ministry of Trade, Industry & Energy · 2025.07 – Present</div>
+        <div class="proj-funder">Ministry of Trade, Industry &amp; Energy &middot; 2025.07 &ndash; Present</div>
         <div class="proj-desc">Conversational fashion AI agent with immersive virtual fitting</div>
       </div>
       <div class="proj-card">
         <div class="proj-title-text">Risk Assessment of Construction Site based on LLMs</div>
-        <div class="proj-funder">Doosan Enerbility · 2024.06 – 2025.05</div>
+        <div class="proj-funder">Doosan Enerbility &middot; 2024.06 &ndash; 2025.05</div>
         <div class="proj-desc">Risk assessment and prediction with Large Language Models</div>
       </div>
       <div class="proj-card">
         <div class="proj-title-text">Translation-Free Multilingual RAG Strategies</div>
-        <div class="proj-funder">NRF · 2026</div>
+        <div class="proj-funder">NRF &middot; 2026</div>
         <div class="proj-desc">Cross-lingual consistency without English pivoting</div>
       </div>
     </div>
@@ -780,47 +569,58 @@
   <!-- Awards -->
   <section class="section" id="awards">
     <h2 class="section-title"><i class="material-icons">emoji_events</i> Scholarships &amp; Awards</h2>
-
     <ul class="award-list">
       <li class="award-row">
-        <div><span class="award-name">Graduate Research Scholarship (GRS)</span> <span class="award-detail">— Full tuition</span></div>
-        <span class="award-date-col">2025.03 –</span>
+        <div><span class="award-name">Graduate Research Scholarship (GRS)</span> <span class="award-detail">&mdash; Full tuition</span></div>
+        <span class="award-date-col">2025.03 &ndash;</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Graduated with Highest Honors</span> <span class="award-detail">— GPA ≥ 4.2/4.5</span></div>
+        <div><span class="award-name">Graduated with Highest Honors</span> <span class="award-detail">&mdash; GPA &ge; 4.2/4.5</span></div>
         <span class="award-date-col">2025.02</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Department Honor Scholarship</span> <span class="award-detail">— 1st in cohort</span></div>
+        <div><span class="award-name">Department Honor Scholarship</span> <span class="award-detail">&mdash; 1st in cohort</span></div>
         <span class="award-date-col">2024.03</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Department Secondary Honor</span> <span class="award-detail">— Top 10%</span></div>
+        <div><span class="award-name">Department Secondary Honor</span> <span class="award-detail">&mdash; Top 10%</span></div>
         <span class="award-date-col">2021.09, 2024.09</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Leadership Scholarship</span> <span class="award-detail">— Dept. Representative</span></div>
-        <span class="award-date-col">2022–2024</span>
+        <div><span class="award-name">Leadership Scholarship</span> <span class="award-detail">&mdash; Dept. Representative</span></div>
+        <span class="award-date-col">2022&ndash;2024</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Excellence Award, SW·AI Startup Idea Competition</span> <span class="award-detail">— Da Vinci Tech Fair</span></div>
+        <div><span class="award-name">Excellence Award, SW&middot;AI Startup Idea Competition</span> <span class="award-detail">&mdash; Da Vinci Tech Fair</span></div>
         <span class="award-date-col">2022.09</span>
       </li>
       <li class="award-row">
-        <div><span class="award-name">Vice President Scholarship</span> <span class="award-detail">— Student Council</span></div>
-        <span class="award-date-col">2021–2022</span>
+        <div><span class="award-name">Vice President Scholarship</span> <span class="award-detail">&mdash; Student Council</span></div>
+        <span class="award-date-col">2021&ndash;2022</span>
       </li>
     </ul>
   </section>
 
   <footer>
-    <p>© 2026 Jeonghyun Park · Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p>&copy; 2026 Jeonghyun Park &middot; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </footer>
 
 </div>
 
 <script>
-  // Intersection Observer for scroll animations
+  // Theme Toggle
+  const toggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) html.setAttribute('data-theme', saved);
+
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -835,7 +635,7 @@
     observer.observe(el);
   });
 
-  // Smooth scroll for nav
+  // Smooth scroll
   document.querySelectorAll('nav a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
