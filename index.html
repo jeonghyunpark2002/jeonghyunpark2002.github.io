@@ -1,639 +1,849 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Jeonghyun Park | M.S. Student at Chung-Ang University</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeonghyun Park | M.S. Student at Chung-Ang University</title>
+  <meta property="og:title" content="Jeonghyun Park" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="M.S. student at Chung-Ang University (AI). Research: RAG, multilingual retrieval, ambiguity." />
+  <meta property="og:description" content="M.S. student at Chung-Ang University (AI). Research: RAG, multilingual retrieval, ambiguity." />
+  <link rel="canonical" href="https://jeonghyunpark2002.github.io/" />
 
-    <meta property="og:title" content="Jeonghyun Park" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="M.S. student at Chung-Ang University (AI). Research: RAG, multilingual retrieval, ambiguity." />
-    <meta property="og:description" content="M.S. student at Chung-Ang University (AI). Research: RAG, multilingual retrieval, ambiguity." />
-    <link rel="canonical" href="https://jeonghyunpark2002.github.io/" />
-    <meta property="og:url" content="https://jeonghyunpark2002.github.io/" />
-    <meta property="og:site_name" content="Jeonghyun Park" />
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="Jeonghyun Park" />
-    <meta name="twitter:site" content="" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
-    />
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <style>
+    :root {
+      --bg: #0c0c0e;
+      --surface: #141418;
+      --surface-hover: #1a1a20;
+      --border: #232329;
+      --border-light: #2a2a32;
+      --text: #e8e6e3;
+      --text-secondary: #8a8a97;
+      --text-muted: #5c5c6a;
+      --accent: #6c63ff;
+      --accent-glow: rgba(108, 99, 255, 0.15);
+      --accent-green: #3dd68c;
+      --accent-orange: #f0a03c;
+      --accent-rose: #f06292;
+      --accent-cyan: #4dd0e1;
+      --radius: 12px;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Instrument Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
-    <style>
-      /* ── Publication Cards ── */
-      .pub-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .pub-list li {
-        list-style: none;
-      }
-      .pub-card {
-        position: relative;
-        background: #fafbfc;
-        border: 1px solid #e1e4e8;
-        border-left: 3px solid #0366d6;
-        border-radius: 6px;
-        padding: 14px 16px;
-        margin-bottom: 12px;
-        transition: box-shadow 0.2s ease, border-color 0.2s ease;
-      }
-      .pub-card:hover {
-        box-shadow: 0 2px 8px rgba(3, 102, 214, 0.12);
-        border-left-color: #0250a3;
-      }
-      .pub-card.accent-green {
-        border-left-color: #2ea44f;
-      }
-      .pub-card.accent-green:hover {
-        box-shadow: 0 2px 8px rgba(46, 164, 79, 0.12);
-        border-left-color: #22863a;
-      }
-      .pub-card.accent-orange {
-        border-left-color: #d29922;
-      }
-      .pub-card.accent-orange:hover {
-        box-shadow: 0 2px 8px rgba(210, 153, 34, 0.12);
-        border-left-color: #b08800;
-      }
-      .pub-card.accent-purple {
-        border-left-color: #8957e5;
-      }
-      .pub-card.accent-purple:hover {
-        box-shadow: 0 2px 8px rgba(137, 87, 229, 0.12);
-        border-left-color: #6f42c1;
-      }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      .pub-title {
-        font-size: 0.95em;
-        font-weight: 600;
-        line-height: 1.4;
-        margin-bottom: 4px;
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grain Overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px;
+    }
+
+    /* ── Hero Ambient Glow ── */
+    .hero-glow {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(108,99,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(12,12,14,0.75);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .hero-text h1 .kr {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 400;
+      margin-left: 12px;
+    }
+    .hero-text .tagline {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin: 12px 0 20px;
+      line-height: 1.65;
+    }
+    .hero-text .tagline strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .hero-links a:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+    .hero-links a i { font-size: 0.95rem; }
+
+    .hero-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1px solid rgba(108,99,255,0.2);
+    }
+
+    /* ── Interests Pills ── */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .pill--rag { background: rgba(108,99,255,0.12); color: #a49bff; }
+    .pill--multi { background: rgba(61,214,140,0.1); color: #3dd68c; }
+    .pill--qa { background: rgba(240,160,60,0.1); color: #f0a03c; }
+
+    /* ── Section ── */
+    .section {
+      margin-top: 56px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+    .section-title .material-icons {
+      font-size: 1.1rem;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── News ── */
+    .news-list { list-style: none; }
+    .news-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 1px;
+      min-width: 80px;
+    }
+    .news-body { color: var(--text-secondary); }
+    .news-body a { color: var(--accent); text-decoration: none; }
+    .news-body a:hover { text-decoration: underline; }
+    .news-body b { color: var(--text); }
+
+    /* ── Publication Cards ── */
+    .pub-category {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    .pub-list { list-style: none; }
+    .pub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 10px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 0 2px 2px 0;
+    }
+    .pub-card:hover {
+      border-color: var(--border-light);
+      background: var(--surface-hover);
+      transform: translateY(-1px);
+    }
+    .pub-card.green::before { background: var(--accent-green); }
+    .pub-card.orange::before { background: var(--accent-orange); }
+    .pub-card.rose::before { background: var(--accent-rose); }
+
+    .pub-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 5px;
+    }
+    .pub-title a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .pub-title a:hover { color: var(--accent); }
+    .pub-authors {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .pub-authors .me {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .pub-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+    }
+    .venue {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+    .venue--acl26 { background: rgba(108,99,255,0.12); color: #a49bff; }
+    .venue--acl25 { background: rgba(61,214,140,0.1); color: #3dd68c; }
+    .venue--journal { background: rgba(240,160,60,0.1); color: #f0a03c; }
+    .venue--preprint { background: rgba(240,98,146,0.1); color: #f06292; }
+
+    .res-link {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .res-link:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-glow);
+    }
+    .res-link i { font-size: 0.82rem; }
+
+    /* ── Education & Experience ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+    .tl-item {
+      padding-left: 32px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+    .tl-item.active::before {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+    .tl-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tl-org {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .tl-role {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    .tl-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Project Cards ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: all 0.25s;
+    }
+    .proj-card:hover {
+      border-color: var(--border-light);
+      background: var(--surface-hover);
+    }
+    .proj-title-text {
+      font-weight: 600;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .proj-funder {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .proj-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ── Awards ── */
+    .award-list { list-style: none; }
+    .award-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .award-row:last-child { border-bottom: none; }
+    .award-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .award-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .award-date-col {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+        padding: 60px 0 40px;
       }
-      .pub-title a {
-        color: #24292e;
-        text-decoration: none;
+      .hero-photo {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+        order: -1;
       }
-      .pub-title a:hover {
-        color: #0366d6;
-        text-decoration: underline;
-      }
-      .pub-authors {
-        font-size: 0.82em;
-        color: #586069;
-        margin-bottom: 8px;
-        line-height: 1.5;
-      }
-      .pub-authors .me {
-        color: #24292e;
-        font-weight: 600;
-      }
-      .pub-meta {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 6px;
-      }
+      .hero-text h1 { font-size: 2.2rem; }
+      .hero-text h1 .kr { display: block; margin-left: 0; margin-top: 4px; }
+      .hero-links { justify-content: center; }
+      .interests { justify-content: center; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 2px; }
+      .nav-links a { padding: 6px 8px; font-size: 0.75rem; }
+      .section-title { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
 
-      /* ── Venue & Resource Badges ── */
-      .venue-badge {
-        display: inline-block;
-        font-size: 0.72em;
-        font-weight: 600;
-        padding: 2px 8px;
-        border-radius: 12px;
-        letter-spacing: 0.02em;
-        line-height: 1.6;
-      }
-      .venue-acl2026 {
-        background: #ddf4ff;
-        color: #0550ae;
-      }
-      .venue-acl2025 {
-        background: #dafbe1;
-        color: #116329;
-      }
-      .venue-journal {
-        background: #fff8c5;
-        color: #6a5307;
-      }
-      .venue-preprint {
-        background: #f0edf8;
-        color: #6f42c1;
-      }
+<div class="hero-glow"></div>
 
-      .res-link {
-        display: inline-block;
-        font-size: 0.72em;
-        font-weight: 500;
-        padding: 2px 8px;
-        border-radius: 4px;
-        text-decoration: none;
-        border: 1px solid #d0d7de;
-        color: #24292e;
-        background: #fff;
-        transition: all 0.15s ease;
-        line-height: 1.6;
-      }
-      .res-link:hover {
-        background: #f3f4f6;
-        border-color: #0366d6;
-        color: #0366d6;
-      }
-      .res-link i {
-        margin-right: 2px;
-        font-size: 0.9em;
-      }
-
-      /* ── News Section ── */
-      .news-list {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-      .news-item {
-        padding: 8px 0;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 0.88em;
-        line-height: 1.55;
-      }
-      .news-item:last-child {
-        border-bottom: none;
-      }
-      .news-date {
-        font-weight: 700;
-        color: #24292e;
-        margin-right: 4px;
-      }
-      .news-item a {
-        color: #0366d6;
-        text-decoration: none;
-      }
-      .news-item a:hover {
-        text-decoration: underline;
-      }
-
-      /* ── Section Headers ── */
-      .section-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-top: 28px;
-        margin-bottom: 14px;
-        padding-bottom: 6px;
-        border-bottom: 2px solid #e1e4e8;
-      }
-      .section-header h3 {
-        margin: 0;
-        border: none;
-        padding: 0;
-      }
-      .section-header .section-icon {
-        font-size: 1.2em;
-        color: #586069;
-      }
-
-      .pub-category {
-        font-size: 0.85em;
-        font-weight: 600;
-        color: #57606a;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-top: 16px;
-        margin-bottom: 8px;
-        padding-left: 2px;
-      }
-
-      /* ── Experience Cards ── */
-      .exp-card {
-        background: #fafbfc;
-        border: 1px solid #e1e4e8;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 10px;
-      }
-      .exp-card h4 {
-        margin: 0 0 6px 0;
-        font-size: 0.92em;
-      }
-      .exp-card ul {
-        margin: 0;
-        padding-left: 18px;
-      }
-      .exp-card li {
-        font-size: 0.88em;
-        color: #444d56;
-        margin-bottom: 2px;
-      }
-
-      /* ── Project Cards ── */
-      .proj-card {
-        background: #fafbfc;
-        border: 1px solid #e1e4e8;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 10px;
-      }
-      .proj-title {
-        font-weight: 600;
-        font-size: 0.9em;
-        color: #24292e;
-        margin-bottom: 2px;
-      }
-      .proj-funder {
-        font-size: 0.78em;
-        color: #586069;
-      }
-      .proj-desc {
-        font-size: 0.83em;
-        color: #444d56;
-        margin-top: 4px;
-      }
-
-      /* ── Award Items ── */
-      .award-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        padding: 6px 0;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 0.88em;
-      }
-      .award-item:last-child {
-        border-bottom: none;
-      }
-      .award-name {
-        color: #24292e;
-        font-weight: 500;
-      }
-      .award-detail {
-        color: #586069;
-        font-style: italic;
-        font-size: 0.92em;
-      }
-      .award-date {
-        color: #8b949e;
-        font-size: 0.85em;
-        white-space: nowrap;
-        margin-left: 12px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Jeonghyun Park</h1>
-        <h2>박정현</h2>
-
-        <img src="materials/profile_jhp.jpg" width="300" alt="Profile Photo" />
-
-        <p>M.S. Student at Chung-Ang University</p>
-        <i class="material-icons md-18">location_on</i> Seoul, Korea<br />
-        <i class="material-icons md-18">email</i> tom0365@cau.ac.kr <br />
-
-        <a href="https://scholar.google.com/citations?user=DOwzO34AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">
-          <i class="ai ai-google-scholar"></i> Google Scholar<br/>
-        </a>
-
-        <a href="https://github.com/jeonghyunpark2002" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i> Github<br/>
-        </a>
-
-        <a href="https://www.linkedin.com/in/jeonghyun-park-997a37312/" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin"></i> Linkedin<br/>
-        </a>
-
-        <a href="materials/CV_Jeonghyun_Park.pdf">
-          <i class="material-icons md-18">insert_drive_file</i> CV<br/>
-        </a>
-      </header>
-
-      <section>
-        <p>
-          I am an M.S. student in the Department of Artificial Intelligence at Chung-Ang University (Seoul, Korea),
-          advised by Prof. Hwanhee Lee. My research interests include Retrieval-Augmented Generation (RAG),
-          Multilingualism and Question Answering.
-        </p>
-
-        <!-- ════════ News ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">campaign</i>
-          <h3 id="news">News</h3>
-        </div>
-
-        <ul class="news-list">
-          <li class="news-item">
-            <span class="news-date">Apr. 2026:</span>
-            Two of my papers (<a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer"><em>DELTA</em></a>, <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer"><em>MARCH</em></a>) have been accepted to <b>ACL 2026 Findings</b>.
-          </li>
-          <li class="news-item">
-            <span class="news-date">Sep. 2025:</span>
-            Got a research grant from 석사과정생연구장려금지원사업 for the <em>"Translation-Free Strategies for Consistent Multilingual Retrieval-Augmented Generation"</em> project. (2025&ndash;2026)
-          </li>
-          <li class="news-item">
-            <span class="news-date">May 2025:</span>
-            My paper (<a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer"><em>Investigating Language Preference</em></a>) has been accepted to <b>ACL 2025 Findings</b>.
-          </li>
-        </ul>
-
-        <!-- ════════ Education ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">school</i>
-          <h3 id="education">Education</h3>
-        </div>
-
-        <div class="exp-card">
-          <h4>Chung-Ang University, Seoul, Korea <sup>2025.02</sup></h4>
-          <ul>
-            <li>B.S. in Artificial Intelligence</li>
-            <li>GPA: 4.20/4.50 (Major GPA: 4.29/4.50)</li>
-          </ul>
-        </div>
-
-        <!-- ════════ Experience ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">work</i>
-          <h3 id="experience">Affiliation &amp; Research Experience</h3>
-        </div>
-
-        <div class="exp-card">
-          <h4>Chung-Ang University, Seoul, Korea <sup>2025.03 &ndash; Present</sup></h4>
-          <ul>
-            <li><b>Master Student</b>, Department of Artificial Intelligence</li>
-            <li>Language Intelligence LAB (LILAB)</li>
-            <li>Advisor: Prof. Hwanhee Lee</li>
-          </ul>
-        </div>
-
-        <div class="exp-card">
-          <h4>Chung-Ang University, Seoul, Korea <sup>2023.07 &ndash; 2025.02</sup></h4>
-          <ul>
-            <li><b>Research Intern</b>, Department of Artificial Intelligence</li>
-            <li>Language Intelligence LAB (LILAB)</li>
-            <li>Advisor: Prof. Hwanhee Lee</li>
-          </ul>
-        </div>
-
-        <div class="exp-card">
-          <h4>Chung-Ang University, Seoul, Korea <sup>2022.12 &ndash; 2023.06</sup></h4>
-          <ul>
-            <li><b>Research Intern</b>, Department of Artificial Intelligence</li>
-            <li>Data Science LAB (DSLAB)</li>
-            <li>Advisor: Prof. Yoonsik Cho</li>
-          </ul>
-        </div>
-
-        <div class="exp-card">
-          <h4>Adobe Research, Remote <sup>2025.06 &ndash; Present</sup></h4>
-          <ul>
-            <li><b>Collaborative Researcher</b>, Natural Language Processing Group</li>
-            <li>Remote Working with Dr. Seunghyun Yoon</li>
-            <li>Theme: resolving ambiguous questions; understanding code-switched text</li>
-          </ul>
-        </div>
-
-        <!-- ════════ Publications ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">description</i>
-          <h3 id="publications">Publications</h3>
-        </div>
-
-        <!-- Conference / Findings -->
-        <div class="pub-category">Conference / Findings</div>
-        <ul class="pub-list">
-          <li>
-            <div class="pub-card">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">
-                  Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion
-                </a>
-              </div>
-              <div class="pub-authors">
-                <span class="me">Jeonghyun Park</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-acl2026">Findings of ACL 2026</span>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/DELTA" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="pub-card">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">
-                  MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference
-                </a>
-              </div>
-              <div class="pub-authors">
-                <span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-acl2026">Findings of ACL 2026</span>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/MARCH" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="pub-card accent-green">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer">
-                  Investigating Language Preference of Multilingual RAG Systems
-                </a>
-              </div>
-              <div class="pub-authors">
-                <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-acl2025">Findings of ACL 2025</span>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_Poster.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-image"></i> Poster</a>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_slides.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-tv"></i> Slides</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <!-- Journal -->
-        <div class="pub-category">Journal</div>
-        <ul class="pub-list">
-          <li>
-            <div class="pub-card accent-orange">
-              <div class="pub-title">
-                <a href="https://www.mdpi.com/2076-3417/15/14/7800" target="_blank" rel="noopener noreferrer">
-                  Cross-Lingual Summarization for Low-Resource Languages Using Multilingual Retrieval-Based In-Context Learning
-                </a>
-              </div>
-              <div class="pub-authors">
-                Gyutae Park, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-journal">Applied Sciences, 2025</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <!-- Preprint -->
-        <div class="pub-category">Preprint / Under Review</div>
-        <ul class="pub-list">
-          <li>
-            <div class="pub-card accent-purple">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2601.04716" target="_blank" rel="noopener noreferrer">
-                  Identifying and Mitigating Bottlenecks in Role-Playing Agents: A Systematic Study of Disentangling Character Profile Axes
-                </a>
-              </div>
-              <div class="pub-authors">
-                Yonghyun Jun, Junhyuk Choi, Jihyeong Park, <span class="me">Jeonghyun Park</span>, Liu Nicole Geumheon, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-preprint">arXiv:2601.04716</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="pub-card accent-purple">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2508.18748" target="_blank" rel="noopener noreferrer">
-                  Chronological Passage Assembling in RAG Framework for Temporal Question Answering
-                </a>
-              </div>
-              <div class="pub-authors">
-                Byeongjeong Kim, <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-preprint">arXiv:2508.18748</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="pub-card accent-purple">
-              <div class="pub-title">
-                <a href="https://arxiv.org/abs/2407.12363" target="_blank" rel="noopener noreferrer">
-                  Conversational Query Reformulation with the Guidance of Retrieved Documents
-                </a>
-              </div>
-              <div class="pub-authors">
-                <span class="me">Jeonghyun Park</span>, Hwanhee Lee&#8224;
-              </div>
-              <div class="pub-meta">
-                <span class="venue-badge venue-preprint">arXiv:2407.12363</span>
-                <a class="res-link" href="https://github.com/jeonghyunpark2002/GuideCQR" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <!-- ════════ Research Projects ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">science</i>
-          <h3 id="projects">Research Projects</h3>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-title">Plug-in External-Memory Models for Augmenting Knowledge of Large Language Models</div>
-          <div class="proj-funder">Funded by National Research Foundation of Korea (NRF) &middot; <em>2025.09 &ndash; Present</em></div>
-          <div class="proj-desc">Research on next-generation RAG via plug-in external memory</div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-title">Next-Generation O2O Fashion Retail System: Enhancing Sales Through Integration of Personal Shoppers and Immersive Virtual Fitting</div>
-          <div class="proj-funder">Funded by the Ministry of Trade, Industry and Energy &middot; <em>2025.07 &ndash; Present</em></div>
-          <div class="proj-desc">Developing conversational fashion AI agent</div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-title">Risk Assessment of Construction Site based on LLMs</div>
-          <div class="proj-funder">Funded by Doosan Enerbility &middot; <em>2024.06 &ndash; 2025.05</em></div>
-          <div class="proj-desc">Risk assessment and prediction with Large Language Models</div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-title">Translation-Free Strategies for Consistent Multilingual Retrieval-Augmented Generation</div>
-          <div class="proj-funder">Funded by National Research Foundation of Korea (NRF) &middot; <em>2026</em></div>
-          <div class="proj-desc">Develop translation-free multilingual RAG strategies to improve cross-lingual consistency without English pivoting</div>
-        </div>
-
-        <!-- ════════ Awards ════════ -->
-        <div class="section-header">
-          <i class="material-icons section-icon">emoji_events</i>
-          <h3 id="awards">Scholarships &amp; Awards</h3>
-        </div>
-
-        <div class="award-item">
-          <div>
-            <span class="award-name">Graduate Research Scholarship (GRS)</span>
-            <span class="award-detail">&nbsp;&mdash; Full tuition</span>
-          </div>
-          <span class="award-date">2025.03 &ndash; Present</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Graduated with Highest Honors</span>
-            <span class="award-detail">&nbsp;&mdash; GPA &ge; 4.2/4.5</span>
-          </div>
-          <span class="award-date">2025.02</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Department Honor Scholarship</span>
-            <span class="award-detail">&nbsp;&mdash; Merit-based; 1st in cohort</span>
-          </div>
-          <span class="award-date">2024.03</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Department Secondary Honor Scholarship</span>
-            <span class="award-detail">&nbsp;&mdash; Merit-based; Top 10%</span>
-          </div>
-          <span class="award-date">2021.09, 2024.09</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Leadership Scholarship</span>
-            <span class="award-detail">&nbsp;&mdash; Department Representative</span>
-          </div>
-          <span class="award-date">2022.09, 2023.03, 2024.03</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Excellence Award, SW&middot;AI Startup Idea Competition</span>
-            <span class="award-detail">&nbsp;&mdash; Da Vinci SW&middot;AI Tech Fair</span>
-          </div>
-          <span class="award-date">2022.09</span>
-        </div>
-        <div class="award-item">
-          <div>
-            <span class="award-name">Vice President Scholarship</span>
-            <span class="award-detail">&nbsp;&mdash; Department Student Council</span>
-          </div>
-          <span class="award-date">2021.11 &ndash; 2022.11</span>
-        </div>
-
-      </section>
-
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">J. Park</a>
+    <div class="nav-links">
+      <a href="#news">News</a>
+      <a href="#publications">Pubs</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
     </div>
+  </div>
+</nav>
 
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="animate-in">Jeonghyun Park <span class="kr">박정현</span></h1>
+      <p class="tagline animate-in delay-1">
+        M.S. student in AI at <strong>Chung-Ang University</strong>, Seoul.
+        Advised by Prof. Hwanhee Lee.
+      </p>
+      <div class="interests animate-in delay-2">
+        <span class="pill pill--rag">RAG</span>
+        <span class="pill pill--multi">Multilingualism</span>
+        <span class="pill pill--qa">Question Answering</span>
+      </div>
+      <div class="hero-links animate-in delay-3">
+        <a href="mailto:tom0365@cau.ac.kr"><i class="material-icons" style="font-size:15px">email</i> Email</a>
+        <a href="https://scholar.google.com/citations?user=DOwzO34AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar"></i> Scholar</a>
+        <a href="https://github.com/jeonghyunpark2002" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/jeonghyun-park-997a37312/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="materials/CV_Jeonghyun_Park.pdf"><i class="material-icons" style="font-size:15px">insert_drive_file</i> CV</a>
+      </div>
+    </div>
+    <div class="hero-photo animate-in delay-2">
+      <img src="materials/profile_jhp.jpg" alt="Jeonghyun Park" />
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="section animate-in delay-4" id="news">
+    <h2 class="section-title"><i class="material-icons">campaign</i> News</h2>
+    <ul class="news-list">
+      <li class="news-item">
+        <span class="news-date">Apr 2026</span>
+        <span class="news-body">Two papers (<a href="https://arxiv.org/abs/2601.02956" target="_blank"><em>DELTA</em></a>, <a href="https://arxiv.org/abs/2509.22750" target="_blank"><em>MARCH</em></a>) accepted to <b>ACL 2026 Findings</b>.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Sep 2025</span>
+        <span class="news-body">Research grant awarded for <em>"Translation-Free Strategies for Consistent Multilingual RAG"</em> project (2025–2026).</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">May 2025</span>
+        <span class="news-body">Paper (<a href="https://arxiv.org/abs/2502.11175" target="_blank"><em>Investigating Language Preference</em></a>) accepted to <b>ACL 2025 Findings</b>.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Publications -->
+  <section class="section" id="publications">
+    <h2 class="section-title"><i class="material-icons">description</i> Publications</h2>
+
+    <div class="pub-category">Conference / Findings</div>
+    <ul class="pub-list">
+      <li>
+        <div class="pub-card">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2601.02956" target="_blank" rel="noopener noreferrer">Enhancing Multilingual RAG Systems with Debiased Language Preference-Guided Query Fusion</a></div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Byeongjeong Kim, Seojin Hwang, Hwanhee Lee†</div>
+          <div class="pub-meta">
+            <span class="venue venue--acl26">Findings of ACL 2026</span>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/DELTA" target="_blank"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="pub-card">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2509.22750" target="_blank" rel="noopener noreferrer">MARCH: Evaluating the Intersection of Ambiguity Interpretation and Multi-hop Inference</a></div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park*</span>, Ingeol Baek*, Seunghyun Yoon, Haeun Jang, Aparna Garimella, Akriti Jain, Nedim Lipka, Hwanhee Lee†</div>
+          <div class="pub-meta">
+            <span class="venue venue--acl26">Findings of ACL 2026</span>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/MARCH" target="_blank"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="pub-card green">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2502.11175" target="_blank" rel="noopener noreferrer">Investigating Language Preference of Multilingual RAG Systems</a></div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-meta">
+            <span class="venue venue--acl25">Findings of ACL 2025</span>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference" target="_blank"><i class="fab fa-github"></i> Code</a>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_Poster.pdf" target="_blank"><i class="fas fa-image"></i> Poster</a>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/LanguagePreference/blob/main/ACL2025_LanguagePreference_slides.pdf" target="_blank"><i class="fas fa-tv"></i> Slides</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pub-category">Journal</div>
+    <ul class="pub-list">
+      <li>
+        <div class="pub-card orange">
+          <div class="pub-title"><a href="https://www.mdpi.com/2076-3417/15/14/7800" target="_blank" rel="noopener noreferrer">Cross-Lingual Summarization for Low-Resource Languages Using Multilingual Retrieval-Based In-Context Learning</a></div>
+          <div class="pub-authors">Gyutae Park, <span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-meta">
+            <span class="venue venue--journal">Applied Sciences, 2025</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pub-category">Preprint / Under Review</div>
+    <ul class="pub-list">
+      <li>
+        <div class="pub-card rose">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2601.04716" target="_blank" rel="noopener noreferrer">Identifying and Mitigating Bottlenecks in Role-Playing Agents: A Systematic Study of Disentangling Character Profile Axes</a></div>
+          <div class="pub-authors">Yonghyun Jun, Junhyuk Choi, Jihyeong Park, <span class="me">Jeonghyun Park</span>, Liu Nicole Geumheon, Hwanhee Lee†</div>
+          <div class="pub-meta"><span class="venue venue--preprint">arXiv:2601.04716</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="pub-card rose">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2508.18748" target="_blank" rel="noopener noreferrer">Chronological Passage Assembling in RAG Framework for Temporal Question Answering</a></div>
+          <div class="pub-authors">Byeongjeong Kim, <span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-meta"><span class="venue venue--preprint">arXiv:2508.18748</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="pub-card rose">
+          <div class="pub-title"><a href="https://arxiv.org/abs/2407.12363" target="_blank" rel="noopener noreferrer">Conversational Query Reformulation with the Guidance of Retrieved Documents</a></div>
+          <div class="pub-authors"><span class="me">Jeonghyun Park</span>, Hwanhee Lee†</div>
+          <div class="pub-meta">
+            <span class="venue venue--preprint">arXiv:2407.12363</span>
+            <a class="res-link" href="https://github.com/jeonghyunpark2002/GuideCQR" target="_blank"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Education & Experience -->
+  <section class="section" id="experience">
+    <h2 class="section-title"><i class="material-icons">school</i> Education &amp; Experience</h2>
+
+    <div class="timeline">
+      <div class="tl-item active">
+        <div class="tl-header">
+          <span class="tl-org">Adobe Research</span>
+          <span class="tl-date">2025.06 – Present</span>
+        </div>
+        <div class="tl-role">Collaborative Researcher · NLP Group (Remote)</div>
+        <div class="tl-detail">w/ Dr. Seunghyun Yoon · Ambiguous questions & code-switched text</div>
+      </div>
+
+      <div class="tl-item active">
+        <div class="tl-header">
+          <span class="tl-org">Chung-Ang University</span>
+          <span class="tl-date">2025.03 – Present</span>
+        </div>
+        <div class="tl-role">M.S. Student · Dept. of AI · LILAB</div>
+        <div class="tl-detail">Advisor: Prof. Hwanhee Lee</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-org">Chung-Ang University</span>
+          <span class="tl-date">2025.02</span>
+        </div>
+        <div class="tl-role">B.S. in Artificial Intelligence</div>
+        <div class="tl-detail">GPA 4.20/4.50 · Graduated with Highest Honors</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-org">Chung-Ang University · LILAB</span>
+          <span class="tl-date">2023.07 – 2025.02</span>
+        </div>
+        <div class="tl-role">Research Intern · Dept. of AI</div>
+        <div class="tl-detail">Advisor: Prof. Hwanhee Lee</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-org">Chung-Ang University · DSLAB</span>
+          <span class="tl-date">2022.12 – 2023.06</span>
+        </div>
+        <div class="tl-role">Research Intern · Dept. of AI</div>
+        <div class="tl-detail">Advisor: Prof. Yoonsik Cho</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <h2 class="section-title"><i class="material-icons">science</i> Research Projects</h2>
+
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-title-text">Plug-in External-Memory Models for Augmenting Knowledge of LLMs</div>
+        <div class="proj-funder">NRF · 2025.09 – Present</div>
+        <div class="proj-desc">Next-generation RAG via plug-in external memory</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title-text">Next-Gen O2O Fashion Retail System</div>
+        <div class="proj-funder">Ministry of Trade, Industry & Energy · 2025.07 – Present</div>
+        <div class="proj-desc">Conversational fashion AI agent with immersive virtual fitting</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title-text">Risk Assessment of Construction Site based on LLMs</div>
+        <div class="proj-funder">Doosan Enerbility · 2024.06 – 2025.05</div>
+        <div class="proj-desc">Risk assessment and prediction with Large Language Models</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title-text">Translation-Free Multilingual RAG Strategies</div>
+        <div class="proj-funder">NRF · 2026</div>
+        <div class="proj-desc">Cross-lingual consistency without English pivoting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="section" id="awards">
+    <h2 class="section-title"><i class="material-icons">emoji_events</i> Scholarships &amp; Awards</h2>
+
+    <ul class="award-list">
+      <li class="award-row">
+        <div><span class="award-name">Graduate Research Scholarship (GRS)</span> <span class="award-detail">— Full tuition</span></div>
+        <span class="award-date-col">2025.03 –</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Graduated with Highest Honors</span> <span class="award-detail">— GPA ≥ 4.2/4.5</span></div>
+        <span class="award-date-col">2025.02</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Department Honor Scholarship</span> <span class="award-detail">— 1st in cohort</span></div>
+        <span class="award-date-col">2024.03</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Department Secondary Honor</span> <span class="award-detail">— Top 10%</span></div>
+        <span class="award-date-col">2021.09, 2024.09</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Leadership Scholarship</span> <span class="award-detail">— Dept. Representative</span></div>
+        <span class="award-date-col">2022–2024</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Excellence Award, SW·AI Startup Idea Competition</span> <span class="award-detail">— Da Vinci Tech Fair</span></div>
+        <span class="award-date-col">2022.09</span>
+      </li>
+      <li class="award-row">
+        <div><span class="award-name">Vice President Scholarship</span> <span class="award-detail">— Student Council</span></div>
+        <span class="award-date-col">2021–2022</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 Jeonghyun Park · Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  </footer>
+
+</div>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeUp 0.5s ease forwards';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+
+  // Smooth scroll for nav
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
 </html>
