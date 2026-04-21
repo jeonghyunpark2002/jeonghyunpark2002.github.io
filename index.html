@@ -244,7 +244,7 @@
     }
 
     .hero-grid {
-      display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: start;
+      display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center;
     }
 
     .hero-text h1 {
@@ -342,8 +342,8 @@
 
     /* Photo */
     .hero-photo {
-      width: 215px; height: 270px;
-      border-radius: 135px;
+      width: 240px; height: 300px;
+      border-radius: 150px;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
@@ -355,7 +355,7 @@
       filter: contrast(1.05) saturate(0.9);
       transition: transform 0.6s var(--ease);
     }
-    .hero-photo:hover img { transform: scale(1.06); }
+    .hero-photo:hover img { transform:; }
     .hero-photo-frame {
       position: absolute; inset: -8px;
       border-radius: 120px;
@@ -1642,7 +1642,7 @@
       const cy = window.innerHeight / 2;
       const dx = (e.clientX - cx) / cx;
       const dy = (e.clientY - cy) / cy;
-      photoInner.style.transform = `translate(${dx * -8}px, ${dy * -8}px) scale(1.05)`;
+      photoInner.style.transform = `translate(${dx * -8}px, ${dy * -8}px)`;
       heroPhoto.style.transform = `rotate(${dx * 1.5}deg)`;
     });
   }
