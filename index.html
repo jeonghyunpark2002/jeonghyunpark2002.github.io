@@ -342,8 +342,8 @@
 
     /* Photo */
     .hero-photo {
-      width: 190px; height: 240px;
-      border-radius: 120px;
+      width: 215px; height: 270px;
+      border-radius: 135px;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
@@ -1062,7 +1062,7 @@
       .nav-right a { display: none; }
       .nav-right .theme-toggle { display: flex; }
       .hero { padding: 44px 0 24px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-grid { gdisplay: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
       .hero-photo { order: -1; width: 150px; height: 180px; }
       .hero-text h1 { font-size: 2.4rem; }
       .hero-links { gap: 5px; }
@@ -1676,7 +1676,7 @@
   document.querySelectorAll('.pub-card, .proj-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
+      const x = (e.clientX - r.left) / r. - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform = `perspective(1000px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg) translateY(-2px)`;
     });
