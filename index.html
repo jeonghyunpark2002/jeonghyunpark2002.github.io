@@ -1676,7 +1676,7 @@
   document.querySelectorAll('.pub-card, .proj-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r. - 0.5;
+      const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform = `perspective(1000px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg) translateY(-2px)`;
     });
